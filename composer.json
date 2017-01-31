@@ -1,0 +1,31 @@
+{
+	"name": "richardhj/contao-newslanguage-list",
+	"description": "AjaxReloadElement for Contao OpenSource CMS",
+	"keywords": ["contao", "newslanguage", "news"],
+	"type": "contao-module",
+	"license": "LGPL-3.0+",
+	"authors": [
+		{
+			"name": "Richard Henkenjohann",
+			"email": "richardhenkenjohann@googlemail.com",
+			"role": "Developer"
+		}
+	],
+	"support": {
+		"issues": "https://github.com/richardhj/contao-newslanguage-list/issues",
+		"source": "https://github.com/richardhj/contao-newslanguage-list"
+	},
+	"require": {
+		"php": "^5.3 || ^7.0",
+		"contao/core": "^3.2",
+		"contao-community-alliance/composer-plugin": "^2.4",
+		"terminal42/contao-newslanguage": "^2.1"
+	},
+	"extra": {
+		"contao": {
+			"sources": {
+				"contao": "system/modules/newslanguage_list"
+			}
+		}
+	}
+}
