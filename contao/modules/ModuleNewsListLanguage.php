@@ -22,28 +22,39 @@ class ModuleNewsListLanguage extends ModuleNewsList
      */
     protected function compile()
     {
-        $language = $GLOBALS['TL_LANGUAGE'];
+        /** @var PageModel $objPage */
+        global $objPage;
 
-        $checkArchive = \Database::getInstance()
-            ->prepare("SELECT language FROM tl_news_archive WHERE id=?")
-            ->execute($this->news_archives[0]);
+        /** @var array $newsArchives */
+        $newsArchives = $this->news_archives;
+        /** @noinspection PhpUndefinedFieldInspection */
+        $languageCheck = NewsArchiveModel::findByPk($newsArchives[0])->language;
 
         // Use the related (translated) news archive(s)
-        if ($language != $checkArchive->language) {
+        if ($objPage->language !== $languageCheck) {
             $relatedArchives = [];
 
-            foreach (deserialize($this->news_archives, true) as $archive) {
-                $relatedArchive = \Database::getInstance()
-                    ->prepare("SELECT id FROM tl_news_archive WHERE master=? AND language=?")
-                    ->limit(1)
-                    ->execute($archive, $language);
+            /** @noinspection PhpUndefinedMethodInspection */
+            $t = NewsArchiveModel::getTable();
+
+            foreach ($newsArchives as $archive) {
+                $relatedArchive = NewsArchiveModel::findOneBy(
+                    [
+                        "$t.master=?",
+                        "$t.language=?",
+                    ],
+                    [
+                        $archive,
+                        $objPage->language,
+                    ]
+                );
 
                 $relatedArchives[] = $relatedArchive->id;
             }
 
-            $this->news_archives = (count($relatedArchives) > 0)
-                ? $relatedArchives
-                : $this->news_archives;
+            if (count($relatedArchives) > 0) {
+                $this->news_archives = $relatedArchives;
+            }
         }
 
         parent::compile();
