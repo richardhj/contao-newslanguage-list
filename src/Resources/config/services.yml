@@ -1,5 +1,5 @@
 services:
-  Richardhj\ContaoNewsLanguageList\EventListener\DataContainer\NewsListMultilingual:
+  Richardhj\ContaoNewsLanguageList\Controller\Module\NewsListMultilingual:
     tags:
       - { name: contao.frontend_module, category: news, type: newslist_ml }
 

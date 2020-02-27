@@ -18,7 +18,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
-class RichardhjContaoNewsLanguageExtension extends Extension
+class RichardhjContaoNewsLanguageListExtension extends Extension
 {
     /**
      * {@inheritdoc}

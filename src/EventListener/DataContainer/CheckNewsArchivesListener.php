@@ -34,7 +34,7 @@ class CheckNewsArchivesListener
         }
 
         $archives = $this->connection->createQueryBuilder()
-            ->select('master', 'language')
+            ->select('master')
             ->from('tl_news_archive')
             ->where('id IN (:ids)')
             ->setParameter('ids', StringUtil::deserialize($value, true), Connection::PARAM_STR_ARRAY)

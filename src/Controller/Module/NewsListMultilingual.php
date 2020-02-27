@@ -11,7 +11,7 @@ declare(strict_types=1);
  * @link       http://github.com/richardhj/contao-newslanguage-list
  */
 
-namespace Richardhj\ContaoNewsLanguageList\EventListener\DataContainer;
+namespace Richardhj\ContaoNewsLanguageList\Controller\Module;
 
 use Contao\ModuleModel;
 use Contao\ModuleNewsList;
