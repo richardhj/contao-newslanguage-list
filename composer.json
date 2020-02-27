@@ -1,9 +1,9 @@
 {
 	"name": "richardhj/contao-newslanguage-list",
-	"description": "AjaxReloadElement for Contao OpenSource CMS",
+	"description": "Manage multilingual news archives in one Contao news list module.",
 	"keywords": ["contao", "newslanguage", "news"],
-	"type": "contao-module",
-	"license": "LGPL-3.0+",
+	"type": "contao-bundle",
+	"license": "LGPL-3.0-or-later",
 	"authors": [
 		{
 			"name": "Richard Henkenjohann",
@@ -16,16 +16,17 @@
 		"source": "https://github.com/richardhj/contao-newslanguage-list"
 	},
 	"require": {
-		"php": "^5.3 || ^7.0",
-		"contao/core": "^3.2",
-		"contao-community-alliance/composer-plugin": "^2.4",
-		"terminal42/contao-newslanguage": "^2.1"
+		"php": "^7.1",
+		"contao/core-bundle": "^4.9",
+		"contao/news-bundle": "^4.9",
+		"terminal42/contao-changelanguage": "^3.1"
 	},
-	"extra": {
-		"contao": {
-			"sources": {
-				"contao": "system/modules/newslanguage_list"
-			}
-		}
-	}
+    "autoload": {
+        "psr-4": {
+            "Richardhj\\ContaoNewsLanguageList\\": "src"
+        }
+    },
+    "extra": {
+        "contao-manager-plugin": "Richardhj\\ContaoNewsLanguageList\\ContaoManager\\Plugin"
+    }
 }
