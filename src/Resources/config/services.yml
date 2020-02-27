@@ -1,0 +1,9 @@
+services:
+  Richardhj\ContaoNewsLanguageList\EventListener\DataContainer\NewsListMultilingual:
+    tags:
+      - { name: contao.frontend_module, category: news, type: newslist_ml }
+
+  Richardhj\ContaoNewsLanguageList\EventListener\DataContainer\CheckNewsArchivesListener:
+    arguments: ['@database_connection']
+    tags:
+      - { name: 'contao.callback', table: 'tl_modules', target: 'fields.news_archives.save' }
